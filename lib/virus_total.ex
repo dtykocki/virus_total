@@ -3,40 +3,48 @@ defmodule VirusTotal do
 
   @client Application.get_env(:virus_total, :http_client)
 
-  def start_link(key) do
-    GenServer.start_link(__MODULE__, key, [])
+  def start(name, key) do
+    VirusTotal.Supervisor.start_child(name, key)
   end
 
-  def ip_address_report(pid, ip_address) do
-    GenServer.call(pid, {:ip_address_report, ip_address})
+  def stop(name) do
+    GenServer.call(name, :stop)
   end
 
-  def url_scan(pid, url) do
-    GenServer.call(pid, {:url_scan, url})
+  def start_link(name, key) do
+    GenServer.start_link(__MODULE__, key, name: name)
   end
 
-  def url_report(pid, scan_id) do
-    GenServer.call(pid, {:url_report, scan_id})
+  def ip_address_report(name, ip_address) do
+    GenServer.call(name, {:ip_address_report, ip_address})
   end
 
-  def domain_report(pid, domain) do
-    GenServer.call(pid, {:domain_report, domain})
+  def url_scan(name, url) do
+    GenServer.call(name, {:url_scan, url})
   end
 
-  def file_scan(pid, file) do
-    GenServer.call(pid, {:file_scan, file})
+  def url_report(name, scan_id) do
+    GenServer.call(name, {:url_report, scan_id})
   end
 
-  def file_rescan(pid, resource) do
-    GenServer.call(pid, {:file_rescan, resource})
+  def domain_report(name, domain) do
+    GenServer.call(name, {:domain_report, domain})
   end
 
-  def file_report(pid, resource) do
-    GenServer.call(pid, {:file_report, resource})
+  def file_scan(name, file) do
+    GenServer.call(name, {:file_scan, file})
   end
 
-  def comment(pid, resource, comment) do
-    GenServer.call(pid, {:comment, resource, comment})
+  def file_rescan(name, resource) do
+    GenServer.call(name, {:file_rescan, resource})
+  end
+
+  def file_report(name, resource) do
+    GenServer.call(name, {:file_report, resource})
+  end
+
+  def comment(name, resource, comment) do
+    GenServer.call(name, {:comment, resource, comment})
   end
 
   def init(key) do
@@ -81,5 +89,9 @@ defmodule VirusTotal do
   def handle_call({:comment, resource, comment}, _from, key) do
     results = @client.comment(key, resource, comment)
     {:reply, results, key}
+  end
+
+  def handle_call(:stop, _from, state) do
+    {:stop, :normal, :stopped, state}
   end
 end
