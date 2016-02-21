@@ -2,6 +2,8 @@
 
 **VirusTotal** is an Elixir OTP application for the [`VirusTotal Public API v2.0`](https://www.virustotal.com/en/documentation/public-api/v2/).
 
+[![Build Status](https://travis-ci.org/dtykocki/virus_total.svg?branch=master)](https://travis-ci.org/dtykocki/virus_total)
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
