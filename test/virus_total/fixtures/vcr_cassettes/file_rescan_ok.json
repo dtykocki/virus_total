@@ -1,0 +1,52 @@
+[
+  {
+    "request": {
+      "body": "{:multipart, [{\"apikey\", \"valid_key\"}, {:file, \"/Users/dtykocki/Development/elixir/virus_total/test/virus_total/fixtures/file_scan.txt\"}]}",
+      "headers": [],
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.virustotal.com/vtapi/v2/file/scan"
+    },
+    "response": {
+      "body": "{\"scan_id\": \"c98c24b677eff44860afea6f493bbaec5bb1c4cbb209c6fc2bbb47f66ff2ad31-1455970042\", \"sha1\": \"60fde9c2310b0d4cad4dab8d126b04387efba289\", \"resource\": \"c98c24b677eff44860afea6f493bbaec5bb1c4cbb209c6fc2bbb47f66ff2ad31\", \"response_code\": 1, \"sha256\": \"c98c24b677eff44860afea6f493bbaec5bb1c4cbb209c6fc2bbb47f66ff2ad31\", \"permalink\": \"https://www.virustotal.com/file/c98c24b677eff44860afea6f493bbaec5bb1c4cbb209c6fc2bbb47f66ff2ad31/analysis/1455970042/\", \"md5\": \"bea8252ff4e80f41719ea13cdf007273\", \"verbose_msg\": \"Scan request successfully queued, come back later for the report\"}",
+      "headers": {
+        "Cache-Control": "no-cache",
+        "content-type": "application/json",
+        "Vary": "Accept-Encoding",
+        "Date": "Sat, 20 Feb 2016 12:11:44 GMT",
+        "Server": "Google Frontend",
+        "Alt-Svc": "quic=\":443\"; ma=2592000; v=\"30,29,28,27,26,25\"",
+        "Accept-Ranges": "none",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "apikey=valid_key&resource=c98c24b677eff44860afea6f493bbaec5bb1c4cbb209c6fc2bbb47f66ff2ad31-1455970042",
+      "headers": [],
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.virustotal.com/vtapi/v2/file/rescan"
+    },
+    "response": {
+      "body": "{\"response_code\": 0, \"resource\": \"c98c24b677eff44860afea6f493bbaec5bb1c4cbb209c6fc2bbb47f66ff2ad31-1455970042\"}",
+      "headers": {
+        "Cache-Control": "no-cache",
+        "content-type": "application/json",
+        "Vary": "Accept-Encoding",
+        "Date": "Sat, 20 Feb 2016 12:11:44 GMT",
+        "Server": "Google Frontend",
+        "Alt-Svc": "quic=\":443\"; ma=2592000; v=\"30,29,28,27,26,25\"",
+        "Accept-Ranges": "none",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "request": {
+      "body": "apikey=valid_key&resource=99017f6eebbac24f351415dd410d522d&comment=Hello%2c+World%3f",
+      "headers": [],
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.virustotal.com/vtapi/v2/comments/put"
+    },
+    "response": {
+      "body": "{\"response_code\": 1, \"verbose_msg\": \"Your comment was successfully posted\"}",
+      "headers": {
+        "Cache-Control": "no-cache",
+        "content-type": "application/json",
+        "Vary": "Accept-Encoding",
+        "Date": "Sun, 21 Feb 2016 10:10:27 GMT",
+        "Server": "Google Frontend",
+        "Alt-Svc": "quic=\":443\"; ma=2592000; v=\"30,29,28,27,26,25\"",
+        "Accept-Ranges": "none",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
