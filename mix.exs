@@ -7,6 +7,8 @@ defmodule VirusTotal.Mixfile do
      elixir: "~> 1.1",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     package: package,
+     description: description,
      deps: deps]
   end
 
@@ -33,5 +35,19 @@ defmodule VirusTotal.Mixfile do
     [{:httpoison, "~> 0.8.0"},
      {:exvcr, "~> 0.7", only: :test},
      {:jsx, "~> 2.6"}]
+  end
+
+  defp description do
+    """
+    Elixir OTP application for the VirusTotal Public API v2.0
+    """
+  end
+
+  defp package do
+    [
+      maintainers: ["Doug Tykocki"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/dtykocki/virus_total"}
+    ]
   end
 end
