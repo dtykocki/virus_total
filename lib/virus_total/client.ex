@@ -1,57 +1,47 @@
 defmodule VirusTotal.Client do
   def file_scan(key, file) do
-    url
-    |> build_url("/file/scan")
-    |> post({:multipart, [{"apikey", key}, {:file, file}]})
-    |> parse_results
+    request(:post, "/file/scan", {:multipart, [{"apikey", key}, {:file, file}]})
   end
 
   def file_rescan(key, resource) do
-    url
-    |> build_url("/file/rescan")
-    |> post({:form, [apikey: key, resource: resource]})
-    |> parse_results
+    request(:post, "/file/rescan", {:form, [apikey: key, resource: resource]})
   end
 
   def file_report(key, resource) do
-    url
-    |> build_url("/file/report")
-    |> post({:form, [apikey: key, resource: resource]})
-    |> parse_results
+    request(:post, "/file/report", {:form, [apikey: key, resource: resource]})
   end
 
   def url_scan(key, url_to_scan) do
-    url
-    |> build_url("/url/scan")
-    |> post({:form, [apikey: key, url: url_to_scan]})
-    |> parse_results
+    request(:post, "/url/scan", {:form, [apikey: key, url: url_to_scan]})
   end
 
   def url_report(key, url_to_report) do
-    url
-    |> build_url("/url/report")
-    |> post({:form, [apikey: key, resource: url_to_report]})
-    |> parse_results
+    request(:post, "/url/report", {:form, [apikey: key, resource: url_to_report]})
   end
 
   def ip_address_report(key, ip_address) do
-    url
-    |> build_url("/ip-address/report")
-    |> get(%{apikey: key, ip: ip_address})
-    |> parse_results
+    request(:get, "/ip-address/report", %{apikey: key, ip: ip_address})
   end
 
   def domain_report(key, domain) do
-    url
-    |> build_url("/domain/report")
-    |> get(%{apikey: key, domain: domain})
-    |> parse_results
+    request(:get, "/domain/report", %{apikey: key, domain: domain})
   end
 
   def comment(key, resource, comment) do
+    request(:post, "/comments/put", {:form, [apikey: key, resource: resource, comment: comment]})
+  end
+
+  defp request(:get, path, params) do
     url
-    |> build_url("/comments/put")
-    |> post({:form, [apikey: key, resource: resource, comment: comment]})
+    |> build_url(path)
+    |> get(params)
+    |> parse_results
+  end
+
+  defp request(:post, path, body) do
+    url
+    |> build_url(path)
+    |> post(body)
     |> parse_results
   end
 

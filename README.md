@@ -16,17 +16,17 @@
 
 ## Installation
 
-1. Add virus_total to your list of dependencies in `mix.exs`:
+  1. Add virus_total to your list of dependencies in `mix.exs`:
 
-      def deps do
-        [{:virus_total, "~> 0.0.1"}]
-      end
+        def deps do
+          [{:virus_total, "~> 0.0.1"}]
+        end
 
-2. Ensure virus_total is started before your application:
+  2. Ensure virus_total is started before your application:
 
-      def application do
-        [applications: [:virus_total]]
-      end
+        def application do
+          [applications: [:virus_total]]
+        end
 
 ## Usage
 
