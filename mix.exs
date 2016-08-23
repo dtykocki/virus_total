@@ -32,7 +32,7 @@ defmodule VirusTotal.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:httpoison, "~> 0.8.0"},
+    [{:httpoison, "~> 0.9.0"},
      {:exvcr, "~> 0.7", only: :test},
      {:jsx, "~> 2.6"}]
   end
