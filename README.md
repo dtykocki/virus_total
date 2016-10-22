@@ -19,7 +19,7 @@
   1. Add virus_total to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:virus_total, "~> 0.0.1"}]
+          [{:virus_total, "~> 0.0.2"}]
         end
 
   2. Ensure virus_total is started before your application:

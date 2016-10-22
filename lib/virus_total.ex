@@ -1,7 +1,7 @@
 defmodule VirusTotal do
   use GenServer
 
-  @client Application.get_env(:virus_total, :http_client)
+  @client Application.get_env(:virus_total, :http_client, VirusTotal.Client)
 
   def start(name, key) do
     VirusTotal.Supervisor.start_child(name, key)
