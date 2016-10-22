@@ -34,6 +34,7 @@ defmodule VirusTotal.Mixfile do
   defp deps do
     [{:httpoison, "~> 0.9.0"},
      {:exvcr, "~> 0.8", only: :test},
+     {:ex_doc, ">= 0.0.0", only: :dev},
      {:jsx, "~> 2.6"}]
   end
 
